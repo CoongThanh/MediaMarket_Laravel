@@ -52,7 +52,7 @@ class MenuService
         Session::flash('success', 'Cập nhật thành công Danh mục');
         return true;
     }
-    // Từ MeuController
+    // Từ MenuController
     public function destroy($request) // Kiểm tra có trong data hay không
     {
         $id = (int) $request->input('id');

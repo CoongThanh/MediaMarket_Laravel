@@ -45,7 +45,7 @@ class MenuController extends Controller
     {
         // dd($menu);
         return view('admin.menu.edit', [
-            'title' => 'Chỉnh Sửa Danh Mục: '. $menu->name,
+            'title' => 'Chỉnh Sửa Danh Mục: ' . $menu->name,
             'menu' => $menu,
             'menus' => $this->menuService->getParent()
         ]);
@@ -57,7 +57,7 @@ class MenuController extends Controller
         return redirect('admin/menus/list');
     }
     public function destroy(Request $request): JsonResponse
-    {   
+    {
         $result = $this->menuService->destroy($request);
         if ($result) {
             return response()->json([
@@ -65,8 +65,6 @@ class MenuController extends Controller
                 'message' => 'Xóa danh mục thành công'
             ]);
         }
-        return response()->json([
-            'error' => true,
-        ]);
+        return response()->json(['error' => true]);
     }
 }

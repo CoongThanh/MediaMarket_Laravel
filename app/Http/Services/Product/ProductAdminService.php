@@ -19,32 +19,67 @@ class ProductAdminService
             $request->input('price') != 0 && $request->input('price_sale') != 0
             && $request->input('price_sale') >= $request->input('price')
         ) {
-            $request::flash('error', 'Giá giảm phải nhỏ hơn giá gốc');
+            Session::flash('error', 'Giá giảm phải nhỏ hơn giá gốc');
             return false;
         }
-        if ($request->input('price') != 0 && $request->input('price_sale') == 0) {
-            $request::flash('error', 'VUi lòng nhập giá gốc');
+
+        if ($request->input('price_sale') != 0 && (int)$request->input('price') == 0) {
+            Session::flash('error', 'Vui lòng nhập giá gốc');
             return false;
         }
-        return true;
+
+        return  true;
     }
     public function insert($request)
     {
         $isValidPrice = $this->isValidPrice($request);
-        if($isValidPrice === false)
-        {
+        if ($isValidPrice === false) {
             return false;
         }
-        try{
-            $request->except('_token');
-        Product::create($request->all());
 
-        Session::flash('success', 'Thêm sản phẩm thành công');
-        } catch(\Exception $err){
+        try {
+            $request->except('_token');
+            Product::create($request->all());
+
+            Session::flash('success', 'Thêm sản phẩm thành công');
+        } catch (\Exception $err) {
             Session::flash('error', 'Thêm sản phẩm thất bại');
             // \Log::info($err->getMessage());
             return false;
         }
         return true;
+    }
+    public function get()
+    {
+        return Product::with('menu')->orderByDesc('id')->paginate(15);
+    }
+
+    public function update($request, $product)
+    {
+        $isValidPrice = $this->isValidPrice($request);
+        if ($isValidPrice === false) {
+            return false;
+        }
+        try {
+            $product->fill($request->input());
+            $product->save();
+            Session::flash('success', 'Cập nhật thành công');
+        } catch (\Exception $err) {
+            Session::flash('error', 'Có lỗi vui lòng thử lại');
+            // \Log::info($err->getMessage());
+            return false;
+        }
+        return true;
+    }  
+    // Kiểm tra tồn tại
+    public function delete($request)
+    {
+        $product = Product::where('id', $request->input('id'))->first(); // Lấy duy nhất
+        if ($product) {
+            $product->delete();
+            return true;
+        }
+        
+        return false;
     }
 }

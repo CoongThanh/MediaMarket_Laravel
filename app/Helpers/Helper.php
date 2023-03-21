@@ -9,7 +9,7 @@ class Helper
         $html = '';
 
         foreach ($menus as $key => $menu) {
-            if ($menu->$parent_id == $parent_id) {
+            if ($menu->parent_id == $parent_id) {
                 $html .= '
                     <tr>
                         <td>' . $menu->id . '</td>
@@ -32,7 +32,7 @@ class Helper
 
                 unset($menus[$key]);
 
-                $html .= self::menu($menus, $menu->id, $char . '|--');
+                $html .= self::menu($menus, $menu->id, $char . '|------');
             }
         }
         return $html;

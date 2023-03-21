@@ -46,3 +46,5 @@ Route::middleware(['auth'])->group(function () {
         #Role
     });
 });
+
+Route::get('/',);

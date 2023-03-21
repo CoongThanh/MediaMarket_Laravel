@@ -13,7 +13,7 @@ function removeRow(id, url)
         $.ajax({
             type: 'DELETE',
             datatype: 'JSON',
-            data: { id },
+            data: {id},
             url: url,
             success: function(result) {
                 if(result.error === false)
