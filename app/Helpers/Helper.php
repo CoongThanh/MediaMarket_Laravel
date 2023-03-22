@@ -14,9 +14,9 @@ class Helper
                     <tr>
                         <td>' . $menu->id . '</td>
                         <td>' . $char . $menu->name . '</td>
-                        <td>' . self::active($menu->active) . '</td>
+                        <td >' . self::active($menu->active) . '</td>
                         <td>' . $menu->updated_at . '</td>
-                        <td>
+                        <td >
                             <a class="btn btn-primary btn-sm" href="edit/' . $menu->id . '">
                                 <i class="fa-solid fa-pen-to-square"></i>
                             </a>

@@ -19,7 +19,7 @@
                 <div class="form-group">
                     <label>Danh Mục</label>
                     <select name="parent_id" class="form-control">
-                        <option value=0>Danh Mục 1</option>
+                        <option value=0>Danh Mục Cha</option>
                         @foreach ($menus as $menu)
                             <option value={{ $menu->id }}>{{ $menu->name }}</option>
                         @endforeach
@@ -41,7 +41,7 @@
                     <div class="form-group">
 
                         <div class="custom-control custom-radio">
-                            <input class="custom-control-input" value="1" type="radio" id="customRadio1"
+                            <input class="custom-control-input" value="1" type="radio" id="active"
                                 name="active" checked="">
                             <label for="active" class="custom-control-label">Có</label>
                         </div>

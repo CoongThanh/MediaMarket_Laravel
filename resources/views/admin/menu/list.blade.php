@@ -6,8 +6,8 @@
             <tr>
                 <th style="width:20px">ID</th>
                 <th>Name</th>
-                <th>Active</th>
-                <th>Update</th>
+                <th>Trạng Thái</th>
+                <th>Cập Nhật</th>
                 <th style="width:100px">&nbsp;</th>
             </tr>
         </thead>

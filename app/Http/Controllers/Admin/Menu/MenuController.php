@@ -20,7 +20,7 @@ class MenuController extends Controller
 
     public function create()
     {
-        return view('admin.menu.add', [
+        return view('admin.menu.create', [
             'title' => 'Thêm Danh Mục Mới',
             'menus' => $this->menuService->getParent(0)
         ]);
@@ -56,6 +56,7 @@ class MenuController extends Controller
         $this->menuService->update($request, $menu);
         return redirect('admin/menus/list');
     }
+    
     public function destroy(Request $request): JsonResponse
     {
         $result = $this->menuService->destroy($request);

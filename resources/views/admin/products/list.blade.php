@@ -9,8 +9,8 @@
                 <th>Danh Mục</th>
                 <th>Giá Gốc</th>
                 <th>Giá Khuyến Mãi</th>
-                <th>Active</th>
-                <th>Update</th>
+                <th>Trạng Thái</th>
+                <th>Cập Nhật</th>
                 <th style="width:100px">&nbsp;</th>
             </tr>
         </thead>
@@ -23,14 +23,14 @@
                     <td>{{ $product->menu->name }}</td>
                     <td>{{ $product->price }}</td>
                     <td>{{ $product->price_sale }}</td>
-                    {{-- <td>{{ \App\Helpers\Helper::active($product->active) }}</td> --}}
+                    <td>{!! \App\Helpers\Helper::active($product->active) !!}</td>
                     <td>{{ $product->updated_at }}</td>
                     <td>
                         <a class="btn btn-primary btn-sm" href="/admin/products/edit/{{ $product->id }}">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </a>
                         <a href="#" class="btn btn-danger btn-sm"
-                            onclick="removeRow( {{ $product->id }}, '/admin/product/destroy')">
+                            onclick="removeRow( {{ $product->id }}, '/admin/products/destroy')">
                             <i class="fa-solid fa-trash"></i>
                         </a>
 

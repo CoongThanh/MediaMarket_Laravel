@@ -2,10 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\Users\LoginController;
-use App\Http\Controllers\Admin\MainController;
+use App\Http\Controllers\MainController;
 use App\Http\Controllers\Admin\Menu\MenuController;
 use App\Http\Controllers\Admin\Product\ProductController;
 use App\Http\Controllers\Admin\UploadController;
+use App\Http\Controllers\Admin\SliderController;
 
 // ->middleware('auth'); kiểm tra đăng nhập 
 // ->name('login'); nếu chưa đăng nhập trả về trang login
@@ -22,8 +23,8 @@ Route::middleware(['auth'])->group(function () {
 
         #Menu
         Route::prefix('menus')->group(function () {
-            Route::get('add', [MenuController::class, 'create']);
-            Route::post('add', [MenuController::class, 'store']);
+            Route::get('create', [MenuController::class, 'create']);
+            Route::post('create', [MenuController::class, 'store']);
             Route::get('list', [MenuController::class, 'index']);
             Route::get('edit/{menu}', [MenuController::class, 'show']);
             Route::post('edit/{menu}', [MenuController::class, 'update']);
@@ -43,8 +44,16 @@ Route::middleware(['auth'])->group(function () {
         #Upload
         Route::post('upload/services', [UploadController::class, 'store']);
 
-        #Role
+        #Sidebar
+        Route::prefix('slider',)->group(function () {
+            Route::get('create', [SliderController::class, 'create']);
+            Route::post('create', [SliderController::class, 'store']);
+            Route::get('list', [SliderController::class, 'index']);
+            Route::get('edit/{slider}', [SliderController::class, 'show']);
+            Route::post('edit/{slider}', [SliderController::class, 'update']);
+            Route::DELETE('destroy', [SliderController::class, 'destroy']);
+        });
     });
 });
 
-Route::get('/',);
+Route::get('/', [MainController::class, 'index']);

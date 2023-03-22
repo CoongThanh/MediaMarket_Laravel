@@ -18,6 +18,14 @@ class MenuService
         return Menu::orderbyDesc('id')->paginate(20); //Lấy toàn bộ
     }
 
+    public function show()
+    {
+        return Menu::select('name', 'id')
+            ->where('parent_id', 0)
+            ->orderbyDesc('id')
+            ->get();
+    }
+
     public function create($request)
     {
         try {

@@ -14,8 +14,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="text">Tên Sản Phẩm</label>
-                            <input type="text" name="name" class="form-control"
-                                placeholder="Nhập tên sản phẩm">
+                            <input type="text" name="name" class="form-control" placeholder="Nhập tên sản phẩm">
                         </div>
                         <!-- /.form-group -->
                     </div>
@@ -74,7 +73,7 @@
                     <div class="form-group">
 
                         <div class="custom-control custom-radio">
-                            <input class="custom-control-input" value="1" type="radio" id="customRadio1"
+                            <input class="custom-control-input" value="1" type="radio" id="active"
                                 name="active" checked="">
                             <label for="active" class="custom-control-label">Có</label>
                         </div>
